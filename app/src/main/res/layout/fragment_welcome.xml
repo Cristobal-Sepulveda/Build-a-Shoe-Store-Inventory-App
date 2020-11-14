@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_color">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/welcomeCardView"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp">
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/welcomeText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:fontFamily="@font/pacifico"
+                    android:text="@string/welcomeScreenFirstText"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textSize="32sp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:srcCompat="@drawable/girasol" />
+                <TextView
+                    android:id="@+id/welcomeText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="90dp"
+                    android:text="@string/welcomeScreenSecondText"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/welcomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_corners"
+            android:text="@string/instructions"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeCardView"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
