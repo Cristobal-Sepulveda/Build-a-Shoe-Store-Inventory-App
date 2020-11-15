@@ -25,22 +25,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.plant(Timber.DebugTree())
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setSupportActionBar(binding.toolbar)
-
         }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+        menuInflater.inflate(R.menu.logout, menu)
         return true
     }
 
-   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.InstructionsFragment) {
-        navController.navigate(InstructionsFragment)
-            return true
-        }
-        return false
-    }*/
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val navController = findNavController(R.id.myNavHostFragment)
+        return item.onNavDestinationSelected(navController) ||
+                super.onOptionsItemSelected(item)
+    }
 }

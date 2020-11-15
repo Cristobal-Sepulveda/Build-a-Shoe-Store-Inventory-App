@@ -38,6 +38,7 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/loginimage" />
                 <EditText
+                    android:labelFor="@+id/userNameLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -45,6 +46,7 @@
                     android:hint="@string/prompt_email"
                     app:drawableStartCompat="@drawable/ic_user" />
                 <EditText
+                    android:labelFor="@+id/userPasswordLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

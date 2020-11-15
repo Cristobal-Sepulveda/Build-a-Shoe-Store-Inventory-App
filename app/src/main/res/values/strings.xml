@@ -18,4 +18,6 @@
     <string name="instructionsTitle">Instructions</string>
     <string name="instructions">Let\'s see the Instructions</string>
     <string name="catalog">Shoe\'s Catalog</string>
+    <string name="logout">Logout</string>
+    <string name="talla">%d</string>
 </resources>
