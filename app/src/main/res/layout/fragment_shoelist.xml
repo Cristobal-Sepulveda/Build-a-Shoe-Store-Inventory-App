@@ -45,31 +45,73 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="26dp">
+                    <!-- RadioGroup & RadioButtons -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
                     <RadioGroup
                         android:id="@+id/radioGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <!-- 1º shoe -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginTop="25dp"
-                            android:layout_marginEnd="30dp">
                         <RadioButton
                             android:id="@+id/button1_RadioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:onClick="@{() -> ShoeListFragment.checkButton()}"
-
-                            />
-                            <androidx.cardview.widget.CardView
+                            android:layout_marginTop="120dp" />
+                        <!-- 2º shoe -->
+                        <RadioButton
+                            android:id="@+id/button2_RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="260dp"/>
+                        <!-- 3º shoe -->
+                        <RadioButton
+                            android:id="@+id/button3_RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="270dp"/>
+                        <!-- 4º shoe -->
+                        <RadioButton
+                            android:id="@+id/button4_RadioButton"
+                            android:layout_marginTop="270dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"/>
+                        <!-- 5º shoe -->
+                        <RadioButton
+                            android:id="@+id/button5_RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="270dp"/>
+                        <!-- 6º shoe -->
+                        <RadioButton
+                            android:id="@+id/button6_RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="270dp"/>
+                    </RadioGroup>
+                    </LinearLayout>
+                    <!-- CardViews -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <!-- 1º shoe -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_marginBottom="20dp"
                                 android:id="@+id/card1"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="280dp"
                                 app:cardCornerRadius="16dp"
                                 app:cardElevation="10dp">
                                 <LinearLayout
@@ -140,21 +182,11 @@
                                     </LinearLayout>
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
-                        </LinearLayout>
                         <!-- 2º shoe -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginEnd="30dp">
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
                         <androidx.cardview.widget.CardView
+                            android:layout_marginBottom="20dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="280dp"
                             app:cardCornerRadius="16dp"
                             app:cardElevation="10dp">
 
@@ -224,21 +256,11 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
-                        </LinearLayout>
                         <!-- 3º shoe -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginEnd="30dp">
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
                         <androidx.cardview.widget.CardView
+                            android:layout_marginBottom="20dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="280dp"
                             app:cardCornerRadius="16dp"
                             app:cardElevation="10dp">
 
@@ -308,21 +330,11 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
-                        </LinearLayout>
                         <!-- 4º shoe -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="20dp"
-                            android:layout_marginEnd="30dp">
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
                         <androidx.cardview.widget.CardView
+                            android:layout_marginBottom="20dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="280dp"
                             app:cardCornerRadius="16dp"
                             app:cardElevation="10dp">
 
@@ -392,21 +404,11 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
-                        </LinearLayout>
                         <!-- 5º shoe -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                        <androidx.cardview.widget.CardView
                             android:layout_marginBottom="20dp"
-                            android:layout_marginEnd="30dp">
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
-                            <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="280dp"
                                 app:cardCornerRadius="16dp"
                                 app:cardElevation="10dp">
 
@@ -476,21 +478,11 @@
                                     </LinearLayout>
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
-                        </LinearLayout>
                         <!-- 6º shoe -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                        <androidx.cardview.widget.CardView
                             android:layout_marginBottom="20dp"
-                            android:layout_marginEnd="30dp">
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
-                            <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="280dp"
                                 app:cardCornerRadius="16dp"
                                 app:cardElevation="10dp">
 
@@ -560,8 +552,7 @@
                                     </LinearLayout>
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
-                        </LinearLayout>
-                    </RadioGroup>
+                </LinearLayout>
                 </LinearLayout>
         </ScrollView>
 
@@ -577,8 +568,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:onClick="@{()->ShoeListFragment.FAB()}"/>
+            android:backgroundTint="@color/colorPrimaryDark"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
