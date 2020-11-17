@@ -10,12 +10,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.DetailActivity
 import com.udacity.shoestore.models.Shoe
+import kotlinx.android.synthetic.main.fragment_shoelist.*
 import java.security.AccessController.getContext
 
 class ShoeListViewModel: ViewModel() {
-    private val _shoeChecked = MutableLiveData<ArrayList<String>>()
-    val shoeChecked: LiveData<ArrayList<String>>
-        get() = _shoeChecked
+    var shoeChecked: String? = null
 
     private val _listOfShoes = MutableLiveData<MutableList<Shoe>>()
     val listOfShoes: LiveData<MutableList<Shoe>>
@@ -29,12 +28,7 @@ class ShoeListViewModel: ViewModel() {
                 Shoe("zapatilla spike", 45.0, "Element", "zapatilla de vestir"),
                 Shoe("zapatilla fila", 36.0, "Fila", "zapatilla blanca con plataforma"))
         }
-    fun addValue(company: String){
-        shoeChecked.value?.add(company)
-    }
-    fun delValue(company:String){
-        shoeChecked.value?.remove(company)
-    }
+
 }
 
 

@@ -20,4 +20,5 @@
     <string name="catalog">Shoe\'s Catalog</string>
     <string name="logout">Logout</string>
     <string name="talla">Size: %d</string>
+    <string name="shoeList_Title_TextView">List of Shoes</string>
 </resources>

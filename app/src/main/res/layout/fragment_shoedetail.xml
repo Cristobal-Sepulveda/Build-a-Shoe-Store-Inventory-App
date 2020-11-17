@@ -5,9 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.shoeList.ShoeListViewModel"
+            name="DetailActivity"
+            type="com.udacity.shoestore.DetailActivity"
             />
+        <variable
+            name="ShoeListViewModel"
+            type="com.udacity.shoestore.shoeList.ShoeListViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -58,26 +61,26 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/shoeName_TextView"
                             tools:text="Model: XxXx"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{ShoeListViewModel.listOfShoes[0].name}"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                         <TextView
                             tools:text="Company: XxXxX"
+                            android:id="@+id/shoeCompany_TextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@{ShoeListViewModel.listOfShoes[0].company}"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                         <TextView
+                            android:id="@+id/shoeSize_TextView"
                             tools:text="Size: XxXx"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{Double.toString(ShoeListViewModel.listOfShoes[0].size)}"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -88,10 +91,9 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
                     <TextView
-                        tools:text=" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw"
+                        android:id="@+id/shoeDescription_TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{ShoeListViewModel.listOfShoes[0].description}"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />

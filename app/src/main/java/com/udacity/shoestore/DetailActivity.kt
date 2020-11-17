@@ -10,6 +10,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import com.udacity.shoestore.databinding.ActivityMainBinding
 import com.udacity.shoestore.databinding.FragmentShoedetailBinding
+import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.shoeList.ShoeListFragment
+import kotlinx.android.synthetic.main.fragment_shoedetail.*
 import timber.log.Timber
 
 class DetailActivity: AppCompatActivity() {
@@ -22,8 +25,15 @@ class DetailActivity: AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
         binding = DataBindingUtil.setContentView(this, R.layout.fragment_shoedetail)
         setSupportActionBar(binding.toolbar2)
-        intent?.let{
 
+        intent?.let{
+            val parcel = intent.extras?.getParcelable(ShoeListFragment.shoeCheckedKey) as Shoe?
+            if (parcel != null) {
+                shoeName_TextView.text = parcel.name
+                shoeCompany_TextView.text = parcel.company
+                shoeSize_TextView.text = parcel.size.toString()
+                shoeDescription_TextView.text = parcel.description
+            }
         }
     }
 
