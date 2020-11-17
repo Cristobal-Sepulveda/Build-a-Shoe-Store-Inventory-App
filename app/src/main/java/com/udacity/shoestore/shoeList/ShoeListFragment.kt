@@ -1,5 +1,7 @@
-package com.udacity.shoestore.shoeList
+ package com.udacity.shoestore.shoeList
 
+import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,22 +10,37 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.udacity.shoestore.DetailActivity
 import com.udacity.shoestore.R
-
 import com.udacity.shoestore.databinding.FragmentShoelistBinding
+import com.udacity.shoestore.models.Shoe
+import kotlinx.android.synthetic.main.fragment_shoelist.*
+import kotlinx.android.synthetic.main.fragment_shoelist.view.*
 
 class ShoeListFragment: Fragment() {
 
-    private lateinit var  viewModel: ShoeListViewModel
+    private lateinit var viewModel: ShoeListViewModel
+    private lateinit var shoeChecked: ArrayList<String>
+
+    companion object {
+        const val shoeChecked = "shoeChecked"
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_shoelist, container, false)
+                inflater, R.layout.fragment_shoelist, container, false)
         viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
         binding.shoeListViewModel = viewModel
         binding.lifecycleOwner = this
-
         return binding.root
+
+        floatingActionButton.setOnClickListener {
+            override fun onClick(v: View) {
+                val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
+                intent.putExtra(shoeChecked, ShoeListViewModel.)
+                startActivity(intent)
+            }
+        }
     }
 }
