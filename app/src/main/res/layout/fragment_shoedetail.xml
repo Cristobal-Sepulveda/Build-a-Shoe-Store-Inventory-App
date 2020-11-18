@@ -5,10 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="DetailActivity"
-            type="com.udacity.shoestore.DetailActivity"
-            />
-        <variable
             name="ShoeListViewModel"
             type="com.udacity.shoestore.shoeList.ShoeListViewModel"/>
     </data>

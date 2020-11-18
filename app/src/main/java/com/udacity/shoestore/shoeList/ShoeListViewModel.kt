@@ -1,18 +1,10 @@
 
 package com.udacity.shoestore.shoeList
 
-import android.content.Intent
-import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.DetailActivity
-import com.udacity.shoestore.MainActivity
 import com.udacity.shoestore.models.Shoe
-import kotlinx.android.synthetic.main.fragment_shoelist.*
-import java.security.AccessController.getContext
 
 class ShoeListViewModel: ViewModel()
 {

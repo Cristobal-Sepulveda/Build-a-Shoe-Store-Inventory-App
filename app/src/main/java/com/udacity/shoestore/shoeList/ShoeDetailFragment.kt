@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoedetailBinding
-import com.udacity.shoestore.databinding.FragmentShoelistBinding
 
 class ShoeDetail: Fragment() {
     private lateinit var  viewModel: ShoeListViewModel
