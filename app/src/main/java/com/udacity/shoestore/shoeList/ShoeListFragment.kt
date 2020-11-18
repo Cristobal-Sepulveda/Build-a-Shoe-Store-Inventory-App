@@ -22,50 +22,62 @@ import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.fragment_shoelist.*
 import kotlinx.android.synthetic.main.fragment_shoelist.view.*
 
-class ShoeListFragment: Fragment() {
+class ShoeListFragment: Fragment()
+{
 
     private lateinit var viewModel: ShoeListViewModel
 
     companion object {
         const val shoeCheckedKey = "shoeChecked"
     }
-    lateinit var radioButton1 : RadioButton
-    lateinit var radioButton2 : RadioButton
-    lateinit var radioButton3 : RadioButton
-    lateinit var radioButton4 : RadioButton
-    lateinit var radioButton5 : RadioButton
-    lateinit var radioButton6 : RadioButton
+    lateinit var shoeChecked: String
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_shoelist, container, false)
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
-        binding.shoeListViewModel = viewModel
-        binding.lifecycleOwner = this
-/*    floatingActionButton.setOnClickListener(object: View.OnClickListener{
-        override fun onClick(v: View?) {
-            Toast.makeText(this@ShoeListFragment.context, "asd", Toast.LENGTH_LONG).show()
+        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                                  savedInstanceState: Bundle?): View?
+        {
+            val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
+                    inflater, R.layout.fragment_shoelist, container, false)
+            viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+            binding.shoeListViewModel = viewModel
+            binding.lifecycleOwner = this
+
+
+            /*floatingActionButton.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(v: View?) {
+                Toast.makeText(this@ShoeListFragment.context, "asd", Toast.LENGTH_LONG).show()
+            }
+            })*/
+
+            return binding.root
         }
-    })*/
-        return binding.root
-    }
 
-    /*fun FAB (){
-        if (viewModel.shoeChecked ==null) {
-            Toast.makeText(this@ShoeListFragment.context, "Select a Shoe first to see his Details", Toast.LENGTH_LONG).show()
-        }else {
+
+    fun FAB (){
+
+    if (radioGroup.checkedRadioButtonId == -1) {
+        Toast.makeText(this@ShoeListFragment.context, "Select a Shoe first to see his Details", Toast.LENGTH_LONG).show()
+    }else{
+            if(button1_RadioButton.isChecked){ shoeChecked = companyText1.toString() }
+            if(button2_RadioButton.isChecked){ shoeChecked = companyText2.toString() }
+            if(button3_RadioButton.isChecked){ shoeChecked = companyText3.toString() }
+            if(button4_RadioButton.isChecked){ shoeChecked = companyText4.toString() }
+            if(button5_RadioButton.isChecked){ shoeChecked = companyText5.toString() }
+            if(button6_RadioButton.isChecked){ shoeChecked = companyText6.toString()}
+
             viewModel.listOfShoes.observe(this,  Observer{
                 var i = 0
-                if(viewModel.shoeChecked != it[i].company){
+                if(shoeChecked != it[i].company){
                     i += 1
                 }else{
-                    var parcel = Shoe(it[i].name, it[i].size, it[i].company, it[i].description)
+                    val parcel = Shoe(it[i].name, it[i].size, it[i].company, it[i].description)
                     val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
-                    intent.putExtra(shoeCheckedKey, viewModel.shoeChecked)
+                    intent.putExtra(shoeCheckedKey, parcel)
                     startActivity(intent)
                 }
             })
         }
-    }*/
+    }
+    /*    fun fab(){
+    Toast.makeText(this@ShoeListFragment.context,"asd", Toast.LENGTH_LONG).show()
+}*/
 }

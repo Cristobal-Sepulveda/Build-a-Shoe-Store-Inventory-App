@@ -136,7 +136,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/nameText0"
+                                                android:id="@+id/nameText1"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="@{ShoeListViewModel.listOfShoes[0].name}"
@@ -145,7 +145,7 @@
                                                 tools:text="Model: XxXx" />
 
                                             <TextView
-                                                android:id="@+id/companyText0"
+                                                android:id="@+id/companyText1"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="10dp"
@@ -156,6 +156,7 @@
                                                 tools:text="Company: XxXxX" />
 
                                             <TextView
+                                                android:id="@+id/sizeText1"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="@{Double.toString(ShoeListViewModel.listOfShoes[0].size)}"
@@ -220,6 +221,7 @@
                                             android:textColor="@color/black"/>
 
                                         <TextView
+                                            android:id="@+id/companyText2"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@{ShoeListViewModel.listOfShoes[1].company}"
@@ -231,6 +233,7 @@
                                             />
 
                                         <TextView
+
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@{Double.toString(ShoeListViewModel.listOfShoes[1].size)}"
@@ -294,6 +297,7 @@
                                             android:textColor="@color/black"/>
 
                                         <TextView
+                                            android:id="@+id/companyText3"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@{ShoeListViewModel.listOfShoes[2].company}"
@@ -368,6 +372,7 @@
                                             android:textColor="@color/black"/>
 
                                         <TextView
+                                            android:id="@+id/companyText4"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="@{ShoeListViewModel.listOfShoes[3].company}"
@@ -442,6 +447,7 @@
                                                 android:textColor="@color/black"/>
 
                                             <TextView
+                                                android:id="@+id/companyText5"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="@{ShoeListViewModel.listOfShoes[4].company}"
@@ -516,6 +522,7 @@
                                                 android:textColor="@color/black"/>
 
                                             <TextView
+                                                android:id="@+id/companyText6"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="@{ShoeListViewModel.listOfShoes[5].company}"
@@ -568,7 +575,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add"
-            android:backgroundTint="@color/colorPrimaryDark"/>
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:onClick="@{()-> ShoeListFragment.FAB()}"/>
+           <!-- android:onClick="@{()-> ShoeListFragment.fab()}" -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

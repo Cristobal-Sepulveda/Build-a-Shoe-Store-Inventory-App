@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_shoelist.*
 import java.security.AccessController.getContext
 
 class ShoeListViewModel: ViewModel() {
-    var shoeChecked: String? = null
+
 
     private val _listOfShoes = MutableLiveData<MutableList<Shoe>>()
     val listOfShoes: LiveData<MutableList<Shoe>>
