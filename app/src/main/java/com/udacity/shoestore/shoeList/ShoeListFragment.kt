@@ -26,7 +26,7 @@ import com.udacity.shoestore.databinding.FragmentShoelistBinding
 import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.fragment_shoelist.*
 import kotlinx.android.synthetic.main.fragment_shoelist.view.*
-
+//
 class ShoeListFragment: Fragment()
 {
     private lateinit var viewModel: ShoeListViewModel
