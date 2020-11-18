@@ -33,6 +33,7 @@
                 app:titleTextAppearance="@font/pacifico"
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -48,27 +49,26 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:src="@drawable/girasol"
                         />
                     <LinearLayout
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/shoeName_TextView"
-                            tools:text="Model: XxXx"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
                         <TextView
-                            tools:text="Company: XxXxX"
                             android:id="@+id/shoeCompany_TextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -78,7 +78,6 @@
                             android:textSize="18sp" />
                         <TextView
                             android:id="@+id/shoeSize_TextView"
-                            tools:text="Size: XxXx"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"

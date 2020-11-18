@@ -38,6 +38,7 @@ class ShoeListFragment: Fragment()
                 val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
                     inflater, R.layout.fragment_shoelist, container, false)
                 viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+                binding.shoeListFragment = this
                 binding.shoeListViewModel = viewModel
                 binding.lifecycleOwner = this
 
@@ -45,41 +46,65 @@ class ShoeListFragment: Fragment()
             }
 
     /** Methods */
-        /*fun FAB () {
+        fun FAB () {
+            var parcel: Shoe
             if (radioGroup.checkedRadioButtonId == -1) {
             Toast.makeText(this@ShoeListFragment.context,
                     "Select a Shoe first to see his Details",
-                    Toast.LENGTH_LONG).show()
+                    Toast.LENGTH_SHORT).show()
             }
-            else
-            {
-                if(button1_RadioButton.isChecked){ shoeChecked = companyText1.toString() }
-                if(button2_RadioButton.isChecked){ shoeChecked = companyText2.toString() }
-                if(button3_RadioButton.isChecked){ shoeChecked = companyText3.toString() }
-                if(button4_RadioButton.isChecked){ shoeChecked = companyText4.toString() }
-                if(button5_RadioButton.isChecked){ shoeChecked = companyText5.toString() }
-                if(button6_RadioButton.isChecked){ shoeChecked = companyText6.toString()}
-
+            else {
                 viewModel.listOfShoes.observe(viewLifecycleOwner,  Observer{
-                    var i = 0
-                    if(shoeChecked != it[i].company){
-                        i += 1
+                    if(button1_RadioButton.isChecked){
+                        shoeChecked = companyText1.toString()
+                        parcel = Shoe(it[0].name, it[0].size, it[0].company, it[0].description)
+                        val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
+                        intent.putExtra(shoeCheckedKey, parcel)
+                        startActivity(intent)
                     }
-                    else
-                    {
-                        val parcel = Shoe(it[i].name, it[i].size, it[i].company, it[i].description)
+                    if(button2_RadioButton.isChecked){
+                        shoeChecked = companyText1.toString()
+                        parcel = Shoe(it[1].name, it[1].size, it[1].company, it[1].description)
+                        val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
+                        intent.putExtra(shoeCheckedKey, parcel)
+                        startActivity(intent)
+                    }
+                    if(button3_RadioButton.isChecked){
+                        shoeChecked = companyText1.toString()
+                        parcel = Shoe(it[2].name, it[2].size, it[2].company, it[2].description)
+                        val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
+                        intent.putExtra(shoeCheckedKey, parcel)
+                        startActivity(intent)
+                    }
+                    if(button4_RadioButton.isChecked){
+                        shoeChecked = companyText1.toString()
+                        parcel = Shoe(it[3].name, it[3].size, it[3].company, it[3].description)
+                        val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
+                        intent.putExtra(shoeCheckedKey, parcel)
+                        startActivity(intent)
+                    }
+                    if(button5_RadioButton.isChecked){
+                        shoeChecked = companyText1.toString()
+                        parcel = Shoe(it[4].name, it[4].size, it[4].company, it[4].description)
+                        val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
+                        intent.putExtra(shoeCheckedKey, parcel)
+                        startActivity(intent)
+                    }
+                    if(button6_RadioButton.isChecked){
+                        shoeChecked = companyText1.toString()
+                        parcel = Shoe(it[5].name, it[5].size, it[5].company, it[5].description)
                         val intent = Intent(this@ShoeListFragment.context, DetailActivity::class.java)
                         intent.putExtra(shoeCheckedKey, parcel)
                         startActivity(intent)
                     }
                 })
             }
-        }*/
+        }
         /*floatingActionButton.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
                 Toast.makeText(this@ShoeListFragment.context, "asd", Toast.LENGTH_LONG).show()}
          })*/
-        fun FAB(){
-            Toast.makeText(this@ShoeListFragment.context ,"asd", Toast.LENGTH_LONG).show()
-        }
+        /*fun FAB(){
+            Toast.makeText(this@ShoeListFragment.context,"asd", Toast.LENGTH_LONG).show()
+        }*/
 }
