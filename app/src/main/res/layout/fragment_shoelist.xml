@@ -6,25 +6,17 @@
     <data>
         <variable
             name="ShoeListViewModel"
-            type="com.udacity.shoestore.shoeList.ShoeListViewModel"
+            type="com.udacity.shoestore.fragments.shoeList.ShoeListViewModel"
             />
         <variable
             name="ShoeListFragment"
-            type="com.udacity.shoestore.shoeList.ShoeListFragment"/>
+            type="com.udacity.shoestore.fragments.shoeList.ShoeListFragment"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_color">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/shoeListTitle_textView"
@@ -54,62 +46,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="26dp">
-                    <!-- RadioGroup & RadioButtons -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                    <RadioGroup
-                        android:id="@+id/radioGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <!-- 1º shoe -->
-                        <RadioButton
-                            android:id="@+id/button1_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="120dp" />
-                        <!-- 2º shoe -->
-                        <RadioButton
-                            android:id="@+id/button2_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="260dp"/>
-                        <!-- 3º shoe -->
-                        <RadioButton
-                            android:id="@+id/button3_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="270dp"/>
-                        <!-- 4º shoe -->
-                        <RadioButton
-                            android:id="@+id/button4_RadioButton"
-                            android:layout_marginTop="270dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
-                        <!-- 5º shoe -->
-                        <RadioButton
-                            android:id="@+id/button5_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="270dp"/>
-                        <!-- 6º shoe -->
-                        <RadioButton
-                            android:id="@+id/button6_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="270dp"/>
-                    </RadioGroup>
-                    </LinearLayout>
+                    android:orientation="vertical"
+                    android:layout_margin="20dp">
                     <!-- CardViews -->
                     <LinearLayout
                         android:layout_width="wrap_content"

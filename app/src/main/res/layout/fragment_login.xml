@@ -3,6 +3,16 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="LoginFragment"
+            type="com.udacity.shoestore.fragments.login.LoginFragment"/>
+        <variable
+            name="MainActivity"
+            type="com.udacity.shoestore.activities.MainActivity" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +36,7 @@
                 android:padding="32dp">
 
                 <TextView
-                    style="@style/loginTitleTextView"
+                    style="@style/fragmentTitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pacifico"
@@ -38,7 +48,7 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/loginimage" />
                 <EditText
-                    android:labelFor="@+id/userNameLabel"
+                    android:id="@+id/userName_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -46,16 +56,16 @@
                     android:hint="@string/prompt_email"
                     app:drawableStartCompat="@drawable/ic_user" />
                 <EditText
-                    android:labelFor="@+id/userPasswordLabel"
+                    android:id="@+id/userPassword_editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:hint="@string/prompt_password"
-                    app:drawableStartCompat="@drawable/ic_lock" />
+                    app:drawableStartCompat="@drawable/ic_lock"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <Button
-            android:id="@+id/createAccountButton"
+            android:id="@+id/createAccount_button"
             style="@style/margins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,12 +73,12 @@
             android:textColor="@color/white"
             android:background="@drawable/button_corners"
             android:padding="5dp"
-            app:layout_constraintEnd_toStartOf="@+id/loginButton"
+            app:layout_constraintEnd_toStartOf="@+id/login_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginCardView" />
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/login_button"
             style="@style/margins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +88,7 @@
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/createAccountButton"
+            app:layout_constraintStart_toEndOf="@+id/createAccount_button"
             app:layout_constraintTop_toBottomOf="@+id/loginCardView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

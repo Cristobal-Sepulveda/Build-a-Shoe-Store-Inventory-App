@@ -1,4 +1,4 @@
-package com.udacity.shoestore.shoeList
+package com.udacity.shoestore.fragments.shoeDetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoedetailBinding
+import com.udacity.shoestore.fragments.shoeList.ShoeListViewModel
 
 class ShoeDetail: Fragment() {
     private lateinit var  viewModel: ShoeListViewModel

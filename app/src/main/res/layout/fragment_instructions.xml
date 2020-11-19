@@ -7,8 +7,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_color">
+
+        <TextView
+            style="@style/fragmentTitleStyle"
+            android:background="@color/white"
+            android:id="@+id/instructionsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/instructionsTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/instructionsCard_cardView"/>
+
+
         <androidx.cardview.widget.CardView
-            android:id="@+id/instructionsCardView"
+            android:id="@+id/instructionsCard_cardView"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -17,23 +31,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:cardCornerRadius="16dp"
             app:cardElevation="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="32dp">
-                <TextView
-                    android:id="@+id/instructionsTitleTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/instructionsTitle"
-                    android:textColor="@color/black"
-                    android:textSize="32sp"
-                    android:gravity="center"
-                    android:fontFamily="@font/pacifico"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +42,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
                 </LinearLayout>
-            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <Button
             android:id="@+id/instructionsButton"
@@ -56,7 +52,7 @@
             android:textColor="@color/white"
             android:background="@drawable/button_corners"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instructionsCardView"
+            app:layout_constraintTop_toBottomOf="@+id/instructionsCard_cardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.0"

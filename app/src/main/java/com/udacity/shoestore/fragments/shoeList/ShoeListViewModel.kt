@@ -1,5 +1,5 @@
 
-package com.udacity.shoestore.shoeList
+package com.udacity.shoestore.fragments.shoeList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
