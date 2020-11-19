@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_shoelist.*
 
  class ShoeListFragment: Fragment()
 {
+    private lateinit var listView: ListView
     private lateinit var viewModel: ShoeListViewModel
             override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
@@ -23,6 +25,8 @@ import kotlinx.android.synthetic.main.fragment_shoelist.*
                 binding.shoeListViewModel = viewModel
                 binding.lifecycleOwner = this
                 binding.shoeListFragment = this
+
+
 
                 return binding.root
             }
