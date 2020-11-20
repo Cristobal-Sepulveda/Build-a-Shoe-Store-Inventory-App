@@ -32,7 +32,7 @@ class ShoeListViewModel: ViewModel()
         _listChange.value = true
     }
     fun listUpdated(){
-        _listChange.value = false
+        _listChange.value = null
     }
 }
 

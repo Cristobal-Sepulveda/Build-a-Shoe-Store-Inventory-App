@@ -51,6 +51,7 @@ class ShoeDetail: Fragment() {
                     shoeDetailCreateCompany_editText.text.toString(),
                     shoeDetailCreateDescription_editText.text.toString()))
             println(viewModel.listOfShoes.value)
+            println(viewModel.listChange.value)
             shoeDetailSaveButton_button.findNavController().navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
         }
     }

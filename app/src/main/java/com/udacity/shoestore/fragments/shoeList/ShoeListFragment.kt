@@ -32,24 +32,23 @@ import kotlinx.android.synthetic.main.fragment_shoelist.*
         binding.lifecycleOwner = this
         binding.shoeListFragment = this
 
-        viewModel.listOfShoes.observe(viewLifecycleOwner, Observer{
+        viewModel.listOfShoes.observe(viewLifecycleOwner, Observer {
             listOfView = shoeList_listView
             val listItems = arrayOfNulls<Shoe>(it.size)
-            for (i in 0 until it.size){
+            for (i in 0 until it.size) {
                 val shoe = it[i]
                 listItems[i] = shoe
             }
             val adapter = this@ShoeListFragment.context?.let { it1 -> ShoeAdapter(it1, listItems) }
+            if (viewModel.listChange.value == null){
+                listOfView.adapter = adapter}
+            else{
+                adapter?.notifyDataSetChanged()
+                listOfView.adapter = adapter
+                viewModel.listUpdated()
+            }
 
-            viewModel.listChange.observe(viewLifecycleOwner,Observer{check ->
-                if(check==true){
-                    adapter?.notifyDataSetChanged()
-                    viewModel.listUpdated()
-                }
-            })
-            listOfView.adapter = adapter
         })
-
         return binding.root
     }
 
