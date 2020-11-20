@@ -1,4 +1,4 @@
-package com.udacity.shoestore
+package com.udacity.shoestore.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.udacity.shoestore.R
 import com.udacity.shoestore.models.Shoe
 
 class ShoeAdapter(private val context: Context, private val dataSource: Array<Shoe?> ): BaseAdapter(){
@@ -16,7 +17,6 @@ class ShoeAdapter(private val context: Context, private val dataSource: Array<Sh
     override fun getCount(): Int {
         return dataSource.size
     }
-
     //2
     override fun getItem(position: Int): Shoe? {
         return dataSource[position]
@@ -26,6 +26,7 @@ class ShoeAdapter(private val context: Context, private val dataSource: Array<Sh
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
+
 
     //4
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

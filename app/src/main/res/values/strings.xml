@@ -23,9 +23,10 @@
     <string name="shoeList_Title_TextView">List of Shoes</string>
     <string name="remember_me">Remember me</string>
     <string name="create_a_new_shoe">Create a New Shoe</string>
-    <string name="shoe_title">Shoe Title</string>
+    <string name="shoe_name">Shoe Name</string>
     <string name="shoe_company">Shoe Company</string>
     <string name="shoe_size">Shoe Size</string>
-    <string name="save">Save</string>
-    <string name="clear">CLEAR</string>
+    <string name="shoe_description">Shoe Description</string>
+    <string name="save">SAVE</string>
+    <string name="cancel">CANCEL</string>
 </resources>
