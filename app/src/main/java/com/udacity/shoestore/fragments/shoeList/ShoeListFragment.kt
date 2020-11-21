@@ -64,17 +64,8 @@ class ShoeListFragment: Fragment() {
 
     fun navigationFAB() {
         val args = ShoeListFragmentArgs.fromBundle(arguments!!)
-        val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size)
-
-        for (i in args.listOfShoesBundle.indices) {
-            val shoe = args.listOfShoesBundle[i]
-            listItems[i] = shoe
-        }
-
-        Log.i("test", "${listItems.last()} \n bundle enviado a detail")
-
         floatingActionButton.findNavController().navigate(
-                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(listItems))
+                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(args.listOfShoesBundle))
     }
 
 }

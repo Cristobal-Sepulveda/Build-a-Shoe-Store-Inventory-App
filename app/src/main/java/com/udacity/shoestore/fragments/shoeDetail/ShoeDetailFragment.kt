@@ -32,8 +32,9 @@ class ShoeDetail: Fragment() {
         binding.shoeDetailFragment = this
 
         val args = ShoeDetailArgs.fromBundle(arguments!!)
-        Log.i("test", "${args.listOfShoesBundle.last()} \n bundle recibido desde list")
-
+        for (element in args.listOfShoesBundle) {
+            Log.i("test", "${element} \n bundle recibido desde list")
+        }
         return binding.root
     }
 
@@ -60,19 +61,14 @@ class ShoeDetail: Fragment() {
             val args = ShoeListFragmentArgs.fromBundle(arguments!!)
             val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size + 1)
 
-            llenando@for (i in 0 until listItems.size){
-                if(i < listItems.size) {
+            for (i in 0 until (listItems.size -1)){
                     val shoe = args.listOfShoesBundle[i]
                     listItems[i] = shoe
-                }else{
-                    val shoe = Shoe(shoeDetailCreateName_editText.text.toString(),
-                            shoeDetailCreateSize_editText.text.toString().toDouble(),
-                            shoeDetailCreateCompany_editText.text.toString(),
-                            shoeDetailCreateDescription_editText.text.toString())
-                    listItems[i] = shoe
-                    break@llenando
                 }
-            }
+            listItems[args.listOfShoesBundle.size] = Shoe(shoeDetailCreateName_editText.text.toString(),
+                    shoeDetailCreateSize_editText.text.toString().toDouble(),
+                    shoeDetailCreateCompany_editText.text.toString(),
+                    shoeDetailCreateDescription_editText.text.toString())
                 Log.i("test", "${listItems.last()} \n bundle pasado a list desde save")
 
             shoeDetailSaveButton_button.findNavController().navigate(
