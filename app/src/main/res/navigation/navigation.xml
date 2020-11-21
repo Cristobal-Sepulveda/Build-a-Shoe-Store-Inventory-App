@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment" />
+        <argument
+            android:name="listOfShoesBundle"
+            app:argType="com.udacity.shoestore.models.Shoe[]" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
@@ -44,5 +47,8 @@
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
             app:popUpTo="@id/instructionsFragment" />
+        <argument
+            android:name="listOfShoesBundle"
+            app:argType="com.udacity.shoestore.models.Shoe[]" />
     </fragment>
 </navigation>

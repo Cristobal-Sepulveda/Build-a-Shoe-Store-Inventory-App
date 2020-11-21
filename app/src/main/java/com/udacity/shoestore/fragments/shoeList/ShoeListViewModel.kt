@@ -21,7 +21,6 @@ class ShoeListViewModel: ViewModel()
     private val _listOfShoes = MutableLiveData(lista)
     val listOfShoes: LiveData<MutableList<Shoe>>
         get() = _listOfShoes
-
     private val _listChange = MutableLiveData<Boolean>()
     val listChange: LiveData<Boolean>
         get()=_listChange

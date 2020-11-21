@@ -20,10 +20,10 @@ class LoginFragment: Fragment() {
         binding.loginFragment= this
 
         binding.createAccountButton.setOnClickListener { v:View ->
-            v.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         }
         binding.loginButton.setOnClickListener { v:View ->
-            v.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         }
 
         return binding.root

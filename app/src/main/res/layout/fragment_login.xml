@@ -11,6 +11,9 @@
         <variable
             name="MainActivity"
             type="com.udacity.shoestore.activities.MainActivity" />
+        <variable
+            name="ShoeListViewModel"
+            type="com.udacity.shoestore.fragments.shoeList.ShoeListViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

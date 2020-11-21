@@ -111,13 +111,13 @@
                         android:layout_height="wrap_content"
                         android:text="@string/save"
                         android:layout_marginEnd="30dp"
-                        android:onClick="@{() -> ShoeDetailFragment.addItem()}"/>
+                        android:onClick="@{()-> ShoeDetailFragment.saveButton()}"/>
                     <Button
                         android:id="@+id/shoeDetailCancelButton_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cancel"
-                        android:onClick="@{()->ShoeDetailFragment.navigationCancel()}"/>
+                        android:onClick="@{()-> ShoeDetailFragment.cancelButton()}"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
