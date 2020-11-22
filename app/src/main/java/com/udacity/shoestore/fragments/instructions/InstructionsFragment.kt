@@ -1,6 +1,7 @@
 package com.udacity.shoestore.fragments.instructions
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.fragment_shoelist.*
 
 class InstructionsFragment: Fragment() {
+
     private lateinit var viewModel: ShoeListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +30,11 @@ class InstructionsFragment: Fragment() {
         binding.lifecycleOwner = this
         binding.shoeListViewModel = viewModel
 
+        val args = InstructionsFragmentArgs.fromBundle(arguments!!)
+        for (element in args.listOfUsersBundle) {
+            Log.i("test", "${element} \n bundle user en instructions")
+        }
+
         binding.instructionsButton.setOnClickListener { v: View ->
             viewModel.listOfShoes.observe(viewLifecycleOwner, Observer {
                 val listItems = arrayOfNulls<Shoe>(it.size)
@@ -37,8 +44,10 @@ class InstructionsFragment: Fragment() {
                     listItems[i] = shoe
                 }
 
-                v.findNavController().navigate(InstructionsFragmentDirections.
-                actionInstructionsFragmentToShoeListFragment(listItems))
+                v.findNavController().navigate(
+                        InstructionsFragmentDirections.
+                        actionInstructionsFragmentToShoeListFragment
+                        (listItems, args.listOfUsersBundle))
             })
         }
 

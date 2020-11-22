@@ -27,7 +27,9 @@
         android:label="WelcomeFragment">
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
-            app:destination="@id/instructionsFragment" />
+            app:destination="@id/instructionsFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="listOfUsersBundle"
             app:argType="com.udacity.shoestore.models.User[]" />
@@ -38,7 +40,9 @@
         android:label="InstructionsFragment">
         <action
             android:id="@+id/action_instructionsFragment_to_shoeListFragment"
-            app:destination="@id/shoeListFragment" />
+            app:destination="@id/shoeListFragment"
+            app:popUpTo="@id/instructionsFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="listOfUsersBundle"
             app:argType="com.udacity.shoestore.models.User[]" />
@@ -56,6 +60,9 @@
         <argument
             android:name="listOfUsersBundle"
             app:argType="com.udacity.shoestore.models.User[]" />
+        <action
+            android:id="@+id/action_shoeListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"

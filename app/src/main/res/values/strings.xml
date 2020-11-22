@@ -8,8 +8,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="createAccount">Sign in</string>
+    <string name="loginAccount">Login</string>
     <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -21,7 +21,6 @@
     <string name="logout">Logout</string>
     <string name="talla">Size: %d</string>
     <string name="shoeList_Title_TextView">List of Shoes</string>
-    <string name="remember_me">Remember me</string>
     <string name="create_a_new_shoe">Create a New Shoe</string>
     <string name="shoe_name">Shoe Name</string>
     <string name="shoe_company">Shoe Company</string>

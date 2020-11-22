@@ -37,7 +37,8 @@ class ShoeListFragment: Fragment() {
         binding.shoeListFragment = this
 
         val args = ShoeListFragmentArgs.fromBundle(arguments!!)
-        Log.i("test", "${args.listOfShoesBundle.last()}\n bundle recibido de detail")
+        Log.i("test", "${args.listOfShoesBundle.last()}\n bundle shoe en shoelist")
+        Log.i("test", "${args.listOfUsersBundle.last()} \n bundle user en shoelist")
 
         viewModel.listOfShoes.observe(viewLifecycleOwner, Observer {
             listOfView = shoeList_listView
@@ -56,7 +57,7 @@ class ShoeListFragment: Fragment() {
     fun navigationFAB() {
         val args = ShoeListFragmentArgs.fromBundle(arguments!!)
         floatingActionButton.findNavController().navigate(
-                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(args.listOfShoesBundle))
+                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(args.listOfShoesBundle, args.listOfUsersBundle))
     }
 
 }

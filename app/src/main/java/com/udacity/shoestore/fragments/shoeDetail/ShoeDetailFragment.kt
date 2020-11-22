@@ -33,9 +33,13 @@ class ShoeDetail: Fragment() {
 
         val args = ShoeDetailArgs.fromBundle(arguments!!)
         for (element in args.listOfShoesBundle) {
-            Log.i("test", "${element} \n bundle recibido desde list")
+            Log.i("test", "${element} \n bundle recibido en details")
+        }
+        for (element in args.listOfUsersBundle) {
+            Log.i("test", "${element} \n bundle user recibido en detail")
         }
         return binding.root
+
     }
 
     fun saveButton() {
@@ -58,7 +62,7 @@ class ShoeDetail: Fragment() {
                     Toast.LENGTH_SHORT).show()
         } else {
 
-            val args = ShoeListFragmentArgs.fromBundle(arguments!!)
+            val args = ShoeDetailArgs.fromBundle(arguments!!)
             val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size + 1)
 
             for (i in 0 until (listItems.size -1)){
@@ -72,21 +76,21 @@ class ShoeDetail: Fragment() {
                 Log.i("test", "${listItems.last()} \n bundle pasado a list desde save")
 
             shoeDetailSaveButton_button.findNavController().navigate(
-                    ShoeDetailDirections.actionShoeDetailFragmentToShoeListFragment(listItems))
+                    ShoeDetailDirections.actionShoeDetailFragmentToShoeListFragment(listItems,args.listOfUsersBundle))
         }
     }
 
     fun cancelButton(){
-        val listItems = arrayOfNulls<Shoe>(viewModel.listOfShoes.value!!.size)
+        val args = ShoeDetailArgs.fromBundle(arguments!!)
+        val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size)
 
-        for (i in 0 until viewModel.listOfShoes.value!!.size) {
-            val shoe = viewModel.listOfShoes.value!![i]
+        for (i in listItems.indices){
+            val shoe = args.listOfShoesBundle[i]
             listItems[i] = shoe
         }
         Log.i("test", "${listItems.last()} \n bundle pasado a list desde cancel")
-
         shoeDetailCancelButton_button.findNavController().navigate(ShoeDetailDirections.
-        actionShoeDetailFragmentToShoeListFragment(listItems))
+        actionShoeDetailFragmentToShoeListFragment(listItems, args.listOfUsersBundle ))
     }
 
 }
