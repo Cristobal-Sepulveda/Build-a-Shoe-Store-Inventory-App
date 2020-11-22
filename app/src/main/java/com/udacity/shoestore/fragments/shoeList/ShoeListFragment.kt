@@ -36,28 +36,19 @@ class ShoeListFragment: Fragment() {
         binding.lifecycleOwner = this
         binding.shoeListFragment = this
 
-        viewModel.listOfShoes.observe(viewLifecycleOwner, Observer {
-            listOfView = shoeList_listView
-            val listItems = arrayOfNulls<Shoe>(it.size)
-
-            for (i in 0 until it.size) {
-                val shoe = it[i]
-                listItems[i] = shoe
-            }
-
-            if (viewModel.listChange.value == null) {
-                val adapter = this@ShoeListFragment.context?.let { it1 -> ShoeAdapter(it1, listItems) }
-                listOfView.adapter = adapter
-            } else {
-                println(listItems)
-                val adapter = this@ShoeListFragment.context?.let { it1 -> ShoeAdapter(it1, listItems) }
-                listOfView.adapter = adapter
-                viewModel.listUpdated()
-            }
-        })
-
         val args = ShoeListFragmentArgs.fromBundle(arguments!!)
         Log.i("test", "${args.listOfShoesBundle.last()}\n bundle recibido de detail")
+
+        viewModel.listOfShoes.observe(viewLifecycleOwner, Observer {
+            listOfView = shoeList_listView
+            val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size)
+            for (i in args.listOfShoesBundle.indices) {
+                val shoe = args.listOfShoesBundle[i]
+                listItems[i] = shoe
+            }
+                val adapter = this@ShoeListFragment.context?.let { it1 -> ShoeAdapter(it1, listItems) }
+                listOfView.adapter = adapter
+        })
 
         return binding.root
     }

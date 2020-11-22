@@ -11,6 +11,15 @@
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_shoeListFragment"
+            app:destination="@id/shoeListFragment" />
+        <argument
+            android:name="listOfUsersBundle"
+            app:argType="com.udacity.shoestore.models.User[]" />
+        <argument
+            android:name="listOfShoesBundle"
+            app:argType="com.udacity.shoestore.models.Shoe[]" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -19,6 +28,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment" />
+        <argument
+            android:name="listOfUsersBundle"
+            app:argType="com.udacity.shoestore.models.User[]" />
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
@@ -27,6 +39,9 @@
         <action
             android:id="@+id/action_instructionsFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment" />
+        <argument
+            android:name="listOfUsersBundle"
+            app:argType="com.udacity.shoestore.models.User[]" />
     </fragment>
     <fragment
         android:id="@+id/shoeListFragment"
@@ -38,6 +53,9 @@
         <argument
             android:name="listOfShoesBundle"
             app:argType="com.udacity.shoestore.models.Shoe[]" />
+        <argument
+            android:name="listOfUsersBundle"
+            app:argType="com.udacity.shoestore.models.User[]" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
@@ -50,5 +68,8 @@
         <argument
             android:name="listOfShoesBundle"
             app:argType="com.udacity.shoestore.models.Shoe[]" />
+        <argument
+            android:name="listOfUsersBundle"
+            app:argType="com.udacity.shoestore.models.User[]" />
     </fragment>
 </navigation>
