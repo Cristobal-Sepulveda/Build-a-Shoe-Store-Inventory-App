@@ -2,64 +2,82 @@ package com.udacity.shoestore.fragments.shoeList
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import com.udacity.shoestore.R
 import com.udacity.shoestore.adapter.ShoeAdapter
 import com.udacity.shoestore.databinding.FragmentShoelistBinding
-import com.udacity.shoestore.fragments.shoeDetail.ShoeDetail
-import com.udacity.shoestore.fragments.welcome.WelcomeFragment
 import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_shoelist.*
 import timber.log.Timber
 
 class ShoeListFragment: Fragment() {
-    lateinit var listOfView: ListView
-    private lateinit var viewModel: ShoeListViewModel
+    private lateinit var viewModel: SharedViewModel
+    private var  parentLinearLayout: LinearLayout? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentShoelistBinding = DataBindingUtil.inflate(inflater,
-                R.layout.fragment_shoelist, container, false)
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+        val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_shoelist, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        binding.shoeListViewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.sharedViewModel = viewModel
         binding.shoeListFragment = this
+        binding.lifecycleOwner = this
+        parentLinearLayout = binding.list
+        setHasOptionsMenu(true)
 
-        val args = ShoeListFragmentArgs.fromBundle(arguments!!)
-        Log.i("test", "${args.listOfShoesBundle.last()}\n bundle shoe en shoelist")
-        Log.i("test", "${args.listOfUsersBundle.last()} \n bundle user en shoelist")
+        //this is just for see the viewModel is working fine
+        Timber.i("${viewModel.listOfShoes.value}")
 
         viewModel.listOfShoes.observe(viewLifecycleOwner, Observer {
-            listOfView = shoeList_listView
-            val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size)
-            for (i in args.listOfShoesBundle.indices) {
-                val shoe = args.listOfShoesBundle[i]
-                listItems[i] = shoe
+            for (i in it.indices) {
+                val shoe = it[i]
+                onAddField(shoe)
             }
-                val adapter = this@ShoeListFragment.context?.let { it1 -> ShoeAdapter(it1, listItems) }
-                listOfView.adapter = adapter
         })
 
         return binding.root
     }
 
-    fun navigationFAB() {
-        val args = ShoeListFragmentArgs.fromBundle(arguments!!)
-        floatingActionButton.findNavController().navigate(
-                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment(args.listOfShoesBundle, args.listOfUsersBundle))
+    // here im creating the logout menu in the toolbar
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater){
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout, menu)
     }
 
+    // >>>>>>>>>>>>>>>>> METHODS <<<<<<<<<<<<<<<<<<<< //
+    /** View Maker */
+    private fun onAddField(newShoe: Shoe) {
+        val inflater= context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val rowView = inflater.inflate(R.layout.card_item, null)
+        val rowViewName = rowView.findViewById<TextView>(R.id.nameText)
+        val rowViewCompany = rowView.findViewById<TextView>(R.id.companyText)
+        val rowViewSize = rowView.findViewById<TextView>(R.id.sizeText)
+        val rowViewDescription = rowView.findViewById<TextView>(R.id.descriptionText)
+        rowViewName.text = newShoe.name
+        rowViewCompany.text = newShoe.company
+        rowViewSize.text = newShoe.size.toString()
+        rowViewDescription.text = newShoe.description
+        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
+    }
+    /** FAB */
+    fun navigationFAB() {
+        floatingActionButton.findNavController().navigate(
+                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+    }
+    // >>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<< //
 }
 
 

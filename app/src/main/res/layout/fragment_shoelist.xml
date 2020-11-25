@@ -4,14 +4,14 @@
 
     <data>
         <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.fragments.shoeList.ShoeListViewModel"
+            name="SharedViewModel"
+            type="com.udacity.shoestore.viewmodel.SharedViewModel"
             />
         <variable
             name="ShoeListFragment"
             type="com.udacity.shoestore.fragments.shoeList.ShoeListFragment"/>
     </data>
-
+    <!-- here i use constraint layout to easy lock the FAB in the lower right corner -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,12 +21,13 @@
             android:id="@+id/shoeListTitle_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/background_toolbar"
             android:fontFamily="@font/pacifico"
             android:text="@string/shoeList_Title_TextView"
             android:textColor="@color/black"
             android:textSize="32sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toTopOf="@id/scrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,23 +37,16 @@
             android:id="@+id/scrollView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:background="@drawable/button_corners"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/background_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeListTitle_textView">
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginStart="13dp">
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <ListView
-                        android:id="@+id/shoeList_listView"
-                        android:layout_width="300dp"
-                        android:layout_height="500dp"/>
                 </LinearLayout>
         </ScrollView>
 

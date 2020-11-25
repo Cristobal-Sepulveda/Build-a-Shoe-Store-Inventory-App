@@ -21,26 +21,19 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         Timber.plant(Timber.DebugTree())
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        navController = (supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment).navController
-
+        navController = (supportFragmentManager.findFragmentById(R.id.myNavHostFragment)
+                as NavHostFragment).navController
         setSupportActionBar(binding.toolbar)
-        NavigationUI.setupActionBarWithNavController(
-                this,
-                navController,
-        )
+        NavigationUI.setupActionBarWithNavController(this, navController, )
+
     }
 
-    override fun onSupportNavigateUp(): Boolean =navController.navigateUp() || super.onSupportNavigateUp()
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        menuInflater.inflate(R.menu.logout, menu)
-        return true
-    }
-
+    override fun onSupportNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()
+    // the onCreateOption menu is in ShoeListFragment
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.myNavHostFragment)
         return item.onNavDestinationSelected(navController) ||

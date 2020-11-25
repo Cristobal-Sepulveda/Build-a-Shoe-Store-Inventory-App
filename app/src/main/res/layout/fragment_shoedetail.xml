@@ -6,121 +6,163 @@
 
     <data>
         <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.fragments.shoeList.ShoeListViewModel"/>
+            name="SharedViewModel"
+            type="com.udacity.shoestore.viewmodel.SharedViewModel"/>
         <variable
             name="ShoeDetailFragment"
             type="com.udacity.shoestore.fragments.shoeDetail.ShoeDetail"/>
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Here i use Linear Layout to keep things simple -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_color">
+        android:background="@drawable/background_color"
+        android:orientation="vertical">
 
         <TextView
-            style="@style/fragmentTitleStyle"
-            android:background="@color/white"
             android:id="@+id/shoeDetailTitle_textView"
+            style="@style/fragmentTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_a_new_shoe"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/shoeDetailCard_cardView"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/white"
+            android:text="@string/create_a_new_shoe" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/shoeDetailCard_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_gravity="center"
             app:cardCornerRadius="16dp"
-            app:cardElevation="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/shoeDetailTitle_textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:cardElevation="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal"
                     android:background="@color/colorPrimary"
-                    android:elevation="5dp">
+                    android:elevation="5dp"
+                    android:orientation="horizontal">
+
                     <ImageView
                         android:id="@+id/dialog_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:paddingHorizontal="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:tint="@android:color/white"
                         tools:src="@drawable/ic_baseline_edit_24" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:text="@string/create_a_new_shoe"
-                        android:textSize="18dp"
                         android:textColor="@android:color/white"
-                        android:gravity="center_vertical"/>
+                        android:textSize="18dp" />
                 </LinearLayout>
-                <EditText
-                    android:id="@+id/shoeDetailCreateName_editText"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:hint="@string/shoe_name"
-                    android:layout_margin="5dp"/>
-                <EditText
-                    android:id="@+id/shoeDetailCreateCompany_editText"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/shoe_company"
-                    android:layout_margin="5dp" />
-                <EditText
-                    android:id="@+id/shoeDetailCreateSize_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/shoe_size"
-                    android:layout_margin="5dp"/>
-                <EditText
-                    android:id="@+id/shoeDetailCreateDescription_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/shoe_description"
-                    android:layout_margin="5dp"/>
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            style="@style/shoeDetail_label"
+                            android:text="Shoe Name"
+                             />
+                        <TextView
+                            style="@style/shoeDetail_label"
+                            android:text="Shoe Size"
+                            />
+                        <TextView
+                            style="@style/shoeDetail_label"
+                            android:text="Shoe Company"
+                            />
+                        <TextView
+                            style="@style/shoeDetail_label"
+                            android:text="Shoe Detail"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/shoeDetailCreateName_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:hint="@string/shoe_name" />
+
+                        <EditText
+                            android:id="@+id/shoeDetailCreateSize_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:hint="@string/shoe_size"
+                            android:inputType="numberDecimal"/>
+
+                        <EditText
+                            android:id="@+id/shoeDetailCreateCompany_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:hint="@string/shoe_company" />
+
+                        <EditText
+                            android:id="@+id/shoeDetailCreateDescription_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:hint="@string/shoe_description" />
+                    </LinearLayout>
+
+                </LinearLayout>
                 <View
                     android:id="@+id/separator"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="10dp"
-                    android:background="@color/colorPrimaryDark"/>
+                    android:background="@color/black" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_margin="5dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/shoeDetailSaveButton_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/save"
                         android:layout_marginEnd="30dp"
-                        android:onClick="@{()-> ShoeDetailFragment.saveButton()}"/>
+                        android:layout_marginBottom="5dp"
+                        android:onClick="@{()-> ShoeDetailFragment.saveButton()}"
+                        android:text="@string/save"
+                        android:background="@drawable/button_corners"/>
+
                     <Button
                         android:id="@+id/shoeDetailCancelButton_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cancel"
-                        android:onClick="@{()-> ShoeDetailFragment.cancelButton()}"/>
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/button_corners"
+                        android:onClick="@{()-> ShoeDetailFragment.cancelButton()}"
+                        android:text="@string/cancel" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

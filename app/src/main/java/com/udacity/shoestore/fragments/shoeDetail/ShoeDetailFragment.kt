@@ -1,7 +1,6 @@
 package com.udacity.shoestore.fragments.shoeDetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,85 +11,67 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoedetailBinding
-import com.udacity.shoestore.fragments.shoeList.ShoeListFragmentArgs
-import com.udacity.shoestore.fragments.shoeList.ShoeListViewModel
+import com.udacity.shoestore.viewmodel.SharedViewModel
 import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.fragment_shoedetail.*
-import kotlinx.android.synthetic.main.fragment_shoelist.*
+import timber.log.Timber
 
 class ShoeDetail: Fragment() {
-    private lateinit var viewModel: ShoeListViewModel
+
+    private lateinit var viewModel: SharedViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
         val binding: FragmentShoedetailBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_shoedetail, container, false)
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        binding.shoeListViewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.sharedViewModel = viewModel
         binding.shoeDetailFragment = this
+        binding.lifecycleOwner = this
 
-        val args = ShoeDetailArgs.fromBundle(arguments!!)
-        for (element in args.listOfShoesBundle) {
-            Log.i("test", "${element} \n bundle recibido en details")
-        }
-        for (element in args.listOfUsersBundle) {
-            Log.i("test", "${element} \n bundle user recibido en detail")
-        }
+        //this is just for see the viewModel is working fine
+        Timber.i("${viewModel.listOfShoes.value}")
+
         return binding.root
 
     }
 
+    // >>>>>>>>>>>>>>>>> Button's Method's <<<<<<<<<<<<<<<<<<<< //
+    /** here in saveButton i add the text's to a Shoe object and then check if it have empty values, if this is true
+     * i toast a message and return,  if doesn't,  i put the Shoe Object in the viewModel
+     * (I DONT CHECK IF THE editText.SIZE.text IS DOUBLE BECAUSE I SET
+     * the input Type of that editText as Number decimal, so, that condition do the job for me*/
     fun saveButton() {
+        val newShoe = Shoe(shoeDetailCreateName_editText.text.toString(),
+                shoeDetailCreateSize_editText.text.toString().toDouble(),
+                shoeDetailCreateCompany_editText.text.toString(),
+                shoeDetailCreateDescription_editText.text.toString())
 
-        val isDouble = (shoeDetailCreateSize_editText.text.toString()).toDoubleOrNull()
-
-        if (shoeDetailCreateName_editText.text.isEmpty() ||
-                shoeDetailCreateCompany_editText.text.isEmpty() ||
-                shoeDetailCreateSize_editText.text.isEmpty() ||
-                shoeDetailCreateDescription_editText.text.isEmpty()) {
+        if (newShoe.name.isEmpty()||
+                shoeDetailCreateSize_editText.text.toString().isEmpty() ||
+                newShoe.company.isEmpty() ||
+                newShoe.description.isEmpty()) {
 
             Toast.makeText(this@ShoeDetail.context,
                     "You must fill in all the boxes to make a new shoe",
                     Toast.LENGTH_SHORT).show()
-        }
-
-        if (isDouble == null) {
-            Toast.makeText(this@ShoeDetail.context,
-                    "You must fill the Shoe size as a Boolean type Number",
-                    Toast.LENGTH_SHORT).show()
+            return
         } else {
 
-            val args = ShoeDetailArgs.fromBundle(arguments!!)
-            val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size + 1)
-
-            for (i in 0 until (listItems.size -1)){
-                    val shoe = args.listOfShoesBundle[i]
-                    listItems[i] = shoe
-                }
-            listItems[args.listOfShoesBundle.size] = Shoe(shoeDetailCreateName_editText.text.toString(),
-                    shoeDetailCreateSize_editText.text.toString().toDouble(),
-                    shoeDetailCreateCompany_editText.text.toString(),
-                    shoeDetailCreateDescription_editText.text.toString())
-                Log.i("test", "${listItems.last()} \n bundle pasado a list desde save")
-
+            viewModel.addShoe(newShoe)
+            // just for see if the addShoe method works
+            Timber.i("${viewModel.listOfShoes.value}")
             shoeDetailSaveButton_button.findNavController().navigate(
-                    ShoeDetailDirections.actionShoeDetailFragmentToShoeListFragment(listItems,args.listOfUsersBundle))
+                    ShoeDetailDirections.actionShoeDetailFragmentToShoeListFragment())
         }
     }
 
-    fun cancelButton(){
-        val args = ShoeDetailArgs.fromBundle(arguments!!)
-        val listItems = arrayOfNulls<Shoe>(args.listOfShoesBundle.size)
-
-        for (i in listItems.indices){
-            val shoe = args.listOfShoesBundle[i]
-            listItems[i] = shoe
-        }
-        Log.i("test", "${listItems.last()} \n bundle pasado a list desde cancel")
-        shoeDetailCancelButton_button.findNavController().navigate(ShoeDetailDirections.
-        actionShoeDetailFragmentToShoeListFragment(listItems, args.listOfUsersBundle ))
+    /** this is for navigate back, nothing else*/
+    fun cancelButton() {
+        shoeDetailCancelButton_button.findNavController().navigate(
+                ShoeDetailDirections.actionShoeDetailFragmentToShoeListFragment())
     }
-
+    // >>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 }

@@ -19,15 +19,10 @@ class WelcomeFragment: Fragment() {
         val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_welcome, container, false)
 
-        var args = WelcomeFragmentArgs.fromBundle(arguments!!)
-        for (element in args.listOfUsersBundle) {
-            Log.i("test", "${element} \n bundle user en welcome")
-        }
         binding.welcomeButton.setOnClickListener { v:View ->
             v.findNavController().navigate(
                     WelcomeFragmentDirections.
-                    actionWelcomeFragmentToInstructionsFragment
-                    (args.listOfUsersBundle))
+                    actionWelcomeFragmentToInstructionsFragment())
         }
 
         return binding.root

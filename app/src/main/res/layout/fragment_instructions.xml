@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.fragments.shoeList.ShoeListViewModel" />
-    </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Here i use Linear Layout to keep things simple -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_color">
+        android:background="@drawable/background_color"
+        android:orientation="vertical">
 
         <TextView
             style="@style/fragmentTitleStyle"
@@ -18,17 +15,19 @@
             android:id="@+id/instructionsTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
             android:text="@string/instructionsTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/instructionsCard_cardView"/>
+            android:padding="5dp"
 
+            />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/instructionsCard_cardView"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,31 +35,38 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="10dp">
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
+                        android:layout_width="137dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/instructions_text1"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
+                    <View
+                        android:id="@+id/separator"
+                        android:layout_width="1dp"
+                        android:layout_height="281dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@color/black" />
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:text="@string/instructions_text2"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
                 </LinearLayout>
         </androidx.cardview.widget.CardView>
         <Button
+            style="@style/buttons"
             android:id="@+id/instructionsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:text="@string/catalog"
-            android:textColor="@color/white"
-            android:background="@drawable/button_corners"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instructionsCard_cardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"/>
+    </LinearLayout>
 </layout>

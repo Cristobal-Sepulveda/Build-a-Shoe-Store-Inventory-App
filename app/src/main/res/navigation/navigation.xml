@@ -14,12 +14,6 @@
         <action
             android:id="@+id/action_loginFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment" />
-        <argument
-            android:name="listOfUsersBundle"
-            app:argType="com.udacity.shoestore.models.User[]" />
-        <argument
-            android:name="listOfShoesBundle"
-            app:argType="com.udacity.shoestore.models.Shoe[]" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -30,9 +24,6 @@
             app:destination="@id/instructionsFragment"
             app:popUpTo="@id/welcomeFragment"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="listOfUsersBundle"
-            app:argType="com.udacity.shoestore.models.User[]" />
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
@@ -43,9 +34,6 @@
             app:destination="@id/shoeListFragment"
             app:popUpTo="@id/instructionsFragment"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="listOfUsersBundle"
-            app:argType="com.udacity.shoestore.models.User[]" />
     </fragment>
     <fragment
         android:id="@+id/shoeListFragment"
@@ -54,12 +42,6 @@
         <action
             android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment" />
-        <argument
-            android:name="listOfShoesBundle"
-            app:argType="com.udacity.shoestore.models.Shoe[]" />
-        <argument
-            android:name="listOfUsersBundle"
-            app:argType="com.udacity.shoestore.models.User[]" />
         <action
             android:id="@+id/action_shoeListFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -71,12 +53,7 @@
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
-            app:popUpTo="@id/instructionsFragment" />
-        <argument
-            android:name="listOfShoesBundle"
-            app:argType="com.udacity.shoestore.models.Shoe[]" />
-        <argument
-            android:name="listOfUsersBundle"
-            app:argType="com.udacity.shoestore.models.User[]" />
+            app:popUpTo="@id/shoeListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
