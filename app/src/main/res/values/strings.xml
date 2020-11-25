@@ -30,8 +30,9 @@
     <string name="cancel">CANCEL</string>
     <string name="instructions_text1">This app is for add views to a LinearLayout.\n\n This views
         will contain a special Layout with a Shoe item within.</string>
-    <string name="instructions_text2">\n To add a View, you must click the Button in the lower right
-        corner to navigate to the View/Shoe Maker.</string>
+    <string name="instructions_text2">To add a View, you must click the Button in the lower right
+        corner to navigate to the Shoe Maker, then, when you navigate back, the listFragment will create
+        a new View!.</string>
     <string name="username">UserName</string>
     <string name="password">Password</string>
 </resources>

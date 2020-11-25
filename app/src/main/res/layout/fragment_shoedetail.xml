@@ -13,6 +13,9 @@
             type="com.udacity.shoestore.fragments.shoeDetail.ShoeDetail"/>
     </data>
     <!-- Here i use Linear Layout to keep things simple -->
+    <!-- Constraint Layout inside the card to make 2 columns
+     (one for label and other for the editText). This is to use baseline between elements
+      in the same file.-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,67 +71,80 @@
                         android:textSize="18dp" />
                 </LinearLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/labelName"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Name"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateName_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateName_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelSize"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Size"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateSize_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateSize_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelCompany"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Company"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateCompany_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateCompany_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelDescription"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Detail"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateDescription_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateDescription_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <EditText
+                        android:id="@+id/shoeDetailCreateName_editText"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            style="@style/shoeDetail_label"
-                            android:text="Shoe Name"
-                             />
-                        <TextView
-                            style="@style/shoeDetail_label"
-                            android:text="Shoe Size"
-                            />
-                        <TextView
-                            style="@style/shoeDetail_label"
-                            android:text="Shoe Company"
-                            />
-                        <TextView
-                            style="@style/shoeDetail_label"
-                            android:text="Shoe Detail"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_name"
+                        app:layout_constraintStart_toEndOf="@id/labelName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <EditText
+                        android:id="@+id/shoeDetailCreateSize_editText"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:id="@+id/shoeDetailCreateName_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:hint="@string/shoe_name" />
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_size"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toEndOf="@id/labelSize"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shoeDetailCreateName_editText"/>
+                    <EditText
+                        android:id="@+id/shoeDetailCreateCompany_editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_company"
+                        app:layout_constraintStart_toEndOf="@id/labelCompany"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shoeDetailCreateSize_editText"/>
+                    <EditText
+                        android:id="@+id/shoeDetailCreateDescription_editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_description"
+                        app:layout_constraintStart_toEndOf="@id/labelDescription"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shoeDetailCreateCompany_editText"/>
 
-                        <EditText
-                            android:id="@+id/shoeDetailCreateSize_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:hint="@string/shoe_size"
-                            android:inputType="numberDecimal"/>
-
-                        <EditText
-                            android:id="@+id/shoeDetailCreateCompany_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:hint="@string/shoe_company" />
-
-                        <EditText
-                            android:id="@+id/shoeDetailCreateDescription_editText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:hint="@string/shoe_description" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <View
                     android:id="@+id/separator"
                     android:layout_width="match_parent"
