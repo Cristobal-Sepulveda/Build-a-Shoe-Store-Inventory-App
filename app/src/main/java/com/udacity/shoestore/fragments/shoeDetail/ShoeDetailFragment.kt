@@ -39,26 +39,26 @@ class ShoeDetail: Fragment() {
     }
 
     // >>>>>>>>>>>>>>>>> Button's Method's <<<<<<<<<<<<<<<<<<<< //
-    /** here in saveButton i add the text's to a Shoe object and then check if it have empty values, if this is true
-     * i toast a message and return,  if doesn't,  i put the Shoe Object in the viewModel
+    /** here in saveButton i check if the edit boxes have empty values, if this is true
+     * i toast a message and return,  if doesn't,  i create a Shoe Object and add it in the viewModel
      * (I DONT CHECK IF THE editText.SIZE.text IS DOUBLE BECAUSE I SET
      * the input Type of that editText as Number decimal, so, that condition do the job for me*/
     fun saveButton() {
-        val newShoe = Shoe(shoeDetailCreateName_editText.text.toString(),
-                shoeDetailCreateSize_editText.text.toString().toDouble(),
-                shoeDetailCreateCompany_editText.text.toString(),
-                shoeDetailCreateDescription_editText.text.toString())
 
-        if (newShoe.name.isEmpty()||
+        if (shoeDetailCreateName_editText.text.toString().isEmpty()||
                 shoeDetailCreateSize_editText.text.toString().isEmpty() ||
-                newShoe.company.isEmpty() ||
-                newShoe.description.isEmpty()) {
+                shoeDetailCreateCompany_editText.text.toString().isEmpty() ||
+                shoeDetailCreateDescription_editText.text.toString().isEmpty()) {
 
             Toast.makeText(this@ShoeDetail.context,
                     "You must fill in all the boxes to make a new shoe",
                     Toast.LENGTH_SHORT).show()
             return
         } else {
+            val newShoe = Shoe(shoeDetailCreateName_editText.text.toString(),
+                    shoeDetailCreateSize_editText.text.toString().toDouble(),
+                    shoeDetailCreateCompany_editText.text.toString(),
+                    shoeDetailCreateDescription_editText.text.toString())
 
             viewModel.addShoe(newShoe)
             // just for see if the addShoe method works

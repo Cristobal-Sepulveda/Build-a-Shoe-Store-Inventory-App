@@ -52,7 +52,7 @@ class LoginFragment: Fragment() {
                 loginFragmentUserPassword_editText.text.isEmpty()) {
 
             Toast.makeText(this@LoginFragment.context,
-                    "You must fill your Email & Password",
+                    "You must fill the boxes with your Email & Password",
                     Toast.LENGTH_SHORT).show()
             return
         }
@@ -64,7 +64,7 @@ class LoginFragment: Fragment() {
             return
         }
 
-        if (viewModel.consultUserExist(newUser)){
+        if (viewModel.consultUserExist(newUser.userName)){
             Toast.makeText(this@LoginFragment.context,
                     "User already exist",
                     Toast.LENGTH_SHORT).show()
@@ -79,7 +79,9 @@ class LoginFragment: Fragment() {
         }
 
     /** Here, first, i make a User object with the text from the editText's. then, i check if the
-    *  username text is empty, has a valid email text (format), or if the user don't exit exist,
+    *  username text is empty, has a valid email text (format). then i check if the user exist
+     *  or if the user don't exit exist or
+     *  the password,
     *  if any of these conditions occur the method returns a toast.
     * ON THE OTHER HAND, IF ALL IS GOOD, i add a newUSer with the viewModel method and navigate
     * to WelcomeFragment */
@@ -103,16 +105,17 @@ class LoginFragment: Fragment() {
             return
         }
 
-        if (!viewModel.consultUserExist(newUser)) {
-            Toast.makeText(this@LoginFragment.context,
-                    "User doesn't Exist",
+        when (viewModel.canILogin(newUser)){
+            1 ->Toast.makeText(this@LoginFragment.context,
+                    "This Mail Doesn't have an Account",
                     Toast.LENGTH_SHORT).show()
-            return
-        }
-
-            login_button.findNavController().navigate(
+            2 ->Toast.makeText(this@LoginFragment.context,
+                    "Wrong Password",
+                    Toast.LENGTH_SHORT).show()
+            3 ->login_button.findNavController().navigate(
                     LoginFragmentDirections.actionLoginFragmentToShoeListFragment())
         }
-
+        return
+    }
     // >>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 }

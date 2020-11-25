@@ -33,19 +33,35 @@ class SharedViewModel: ViewModel()
         }
     }
 
-    fun consultUserExist(newUser: User): Boolean {
+    fun consultUserExist(userName : String): Boolean {
         if(_listOfUsers.value == null){
             return false
         }
         for (i in _listOfUsers.value!!.indices) {
-            if (newUser == _listOfUsers.value!![i]) {
+            if (userName == _listOfUsers.value!![i].userName) {
                 return true
             }
         }
         return false
     }
+    fun canILogin(user: User): Int{
 
-    // >>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
+        if(_listOfUsers.value == null){
+            return 1
+        }
+
+        for (i in _listOfUsers.value!!.indices) {
+            if (user.userName == _listOfUsers.value!![i].userName) {
+                return if (user.userPassword == _listOfUsers.value!![i].userPassword) {
+                    3
+                }else
+                    2
+            }
+        }
+        return   1
+    }
 }
+    // >>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
+
 
 
