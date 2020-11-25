@@ -1,20 +1,17 @@
-package com.udacity.shoestore
+package com.udacity.shoestore.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -22,19 +19,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         Timber.plant(Timber.DebugTree())
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        navController = (supportFragmentManager.findFragmentById(R.id.myNavHostFragment)
+                as NavHostFragment).navController
         setSupportActionBar(binding.toolbar)
-        }
+        NavigationUI.setupActionBarWithNavController(this, navController, )
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        menuInflater.inflate(R.menu.logout, menu)
-        return true
     }
 
+    override fun onSupportNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()
+    // the onCreateOption menu is in ShoeListFragment
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.myNavHostFragment)
         return item.onNavDestinationSelected(navController) ||

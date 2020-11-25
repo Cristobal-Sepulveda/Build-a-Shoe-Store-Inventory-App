@@ -3,102 +3,182 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
-            name="DetailActivity"
-            type="com.udacity.shoestore.DetailActivity"
-            />
+            name="SharedViewModel"
+            type="com.udacity.shoestore.viewmodel.SharedViewModel"/>
         <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.shoeList.ShoeListViewModel"/>
+            name="ShoeDetailFragment"
+            type="com.udacity.shoestore.fragments.shoeDetail.ShoeDetail"/>
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Here i use Linear Layout to keep things simple -->
+    <!-- Constraint Layout inside the card to make 2 columns
+     (one for label and other for the editText). This is to use baseline between elements
+      in the same file.-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_color">
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBar2"
+        android:background="@drawable/background_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/shoeDetailTitle_textView"
+            style="@style/fragmentTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/white"
+            android:text="@string/create_a_new_shoe" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/shoeDetailCard_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar2"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/background_toolbar"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:titleTextAppearance="@font/pacifico"
-                app:titleTextColor="@color/white" />
-        </com.google.android.material.appbar.AppBarLayout>
-        <androidx.cardview.widget.CardView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBar2">
+            app:cardElevation="16dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/colorPrimary"
+                    android:elevation="5dp"
                     android:orientation="horizontal">
+
                     <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        />
-                    <LinearLayout
-                        android:layout_width="150dp"
+                        android:id="@+id/dialog_icon"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/shoeName_TextView"
-                            tools:text="Model: XxXx"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            tools:text="Company: XxXxX"
-                            android:id="@+id/shoeCompany_TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                        <TextView
-                            android:id="@+id/shoeSize_TextView"
-                            tools:text="Size: XxXx"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-                    </LinearLayout>
+                        android:paddingHorizontal="16dp"
+                        app:tint="@android:color/white"
+                        tools:src="@drawable/ic_baseline_edit_24" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/create_a_new_shoe"
+                        android:textColor="@android:color/white"
+                        android:textSize="18dp" />
                 </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/labelName"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Name"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateName_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateName_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelSize"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Size"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateSize_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateSize_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelCompany"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Company"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateCompany_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateCompany_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/labelDescription"
+                        style="@style/shoeDetail_label"
+                        android:text="Shoe Detail"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/shoeDetailCreateDescription_editText"
+                        app:layout_constraintEnd_toStartOf="@id/shoeDetailCreateDescription_editText"
+                        app:layout_constraintStart_toStartOf="parent" />
+                    <EditText
+                        android:id="@+id/shoeDetailCreateName_editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_name"
+                        app:layout_constraintStart_toEndOf="@id/labelName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <EditText
+                        android:id="@+id/shoeDetailCreateSize_editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_size"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toEndOf="@id/labelSize"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shoeDetailCreateName_editText"/>
+                    <EditText
+                        android:id="@+id/shoeDetailCreateCompany_editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_company"
+                        app:layout_constraintStart_toEndOf="@id/labelCompany"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shoeDetailCreateSize_editText"/>
+                    <EditText
+                        android:id="@+id/shoeDetailCreateDescription_editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/shoe_description"
+                        app:layout_constraintStart_toEndOf="@id/labelDescription"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shoeDetailCreateCompany_editText"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/black" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/shoeDescription_TextView"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/shoeDetailSaveButton_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:onClick="@{()-> ShoeDetailFragment.saveButton()}"
+                        android:text="@string/save"
+                        android:background="@drawable/button_corners"/>
+
+                    <Button
+                        android:id="@+id/shoeDetailCancelButton_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/button_corners"
+                        android:onClick="@{()-> ShoeDetailFragment.cancelButton()}"
+                        android:text="@string/cancel" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

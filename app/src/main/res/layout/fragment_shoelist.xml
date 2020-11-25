@@ -1,573 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="ShoeListViewModel"
-            type="com.udacity.shoestore.shoeList.ShoeListViewModel"
+            name="SharedViewModel"
+            type="com.udacity.shoestore.viewmodel.SharedViewModel"
             />
         <variable
             name="ShoeListFragment"
-            type="com.udacity.shoestore.shoeList.ShoeListFragment"/>
+            type="com.udacity.shoestore.fragments.shoeList.ShoeListFragment"/>
     </data>
-
+    <!-- here i use constraint layout to easy lock the FAB in the lower right corner -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_color">
+
         <TextView
             android:id="@+id/shoeListTitle_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:background="@drawable/background_toolbar"
             android:fontFamily="@font/pacifico"
             android:text="@string/shoeList_Title_TextView"
             android:textColor="@color/black"
             android:textSize="32sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toTopOf="@id/scrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/shoeListTitle_textView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> ShoeListFragment.FAB()}"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="wrap_content"
-            android:layout_height="625dp"
-            android:fillViewport="true"
-            android:background="@drawable/button_corners"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeListTitle_textView">
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="26dp">
-                    <!-- RadioGroup & RadioButtons -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                    <RadioGroup
-                        android:id="@+id/radioGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <!-- 1º shoe -->
-                        <RadioButton
-                            android:id="@+id/button1_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="120dp" />
-                        <!-- 2º shoe -->
-                        <RadioButton
-                            android:id="@+id/button2_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="260dp"/>
-                        <!-- 3º shoe -->
-                        <RadioButton
-                            android:id="@+id/button3_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="270dp"/>
-                        <!-- 4º shoe -->
-                        <RadioButton
-                            android:id="@+id/button4_RadioButton"
-                            android:layout_marginTop="270dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"/>
-                        <!-- 5º shoe -->
-                        <RadioButton
-                            android:id="@+id/button5_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="270dp"/>
-                        <!-- 6º shoe -->
-                        <RadioButton
-                            android:id="@+id/button6_RadioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="270dp"/>
-                    </RadioGroup>
-                    </LinearLayout>
-                    <!-- CardViews -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <!-- 1º shoe -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_marginBottom="20dp"
-                                android:id="@+id/card1"
-                                android:layout_width="match_parent"
-                                android:layout_height="280dp"
-                                app:cardCornerRadius="16dp"
-                                app:cardElevation="10dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="150dp"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/azaleia" />
-
-                                        <LinearLayout
-                                            android:layout_width="150dp"
-                                            android:layout_height="match_parent"
-                                            android:gravity="center"
-                                            android:orientation="vertical">
-
-                                            <TextView
-                                                android:id="@+id/nameText1"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{ShoeListViewModel.listOfShoes[0].name}"
-                                                android:textColor="@color/black"
-                                                android:textSize="18sp"
-                                                tools:text="Model: XxXx" />
-
-                                            <TextView
-                                                android:id="@+id/companyText1"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="10dp"
-                                                android:text="@{ShoeListViewModel.listOfShoes[0].company}"
-                                                android:textColor="@color/black"
-                                                android:textSize="18sp"
-                                                tools:text="Company: XxXxX" />
-
-                                            <TextView
-                                                android:id="@+id/sizeText1"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{Double.toString(ShoeListViewModel.listOfShoes[0].size)}"
-                                                android:textColor="@color/black"
-                                                android:textSize="18sp"
-                                                tools:text="Size: XxXx" />
-                                        </LinearLayout>
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_margin="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[0].description}"
-                                            android:textAlignment="center"
-                                            android:textColor="@color/black"
-                                            android:textSize="18sp"
-                                            tools:text=" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-                        <!-- 2º shoe -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="280dp"
-                            app:cardCornerRadius="16dp"
-                            app:cardElevation="10dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="150dp"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/bata" />
-
-                                    <LinearLayout
-                                        android:layout_width="150dp"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[1].name}"
-                                            android:textSize="18sp"
-                                            tools:text = "Model: XxXx"
-                                            android:textColor="@color/black"/>
-
-                                        <TextView
-                                            android:id="@+id/companyText2"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[1].company}"
-                                            android:textSize="18sp"
-                                            android:textColor="@color/black"
-                                            android:layout_marginTop="10dp"
-                                            android:layout_marginBottom="10dp"
-                                            tools:text = "Company: XxXxX"
-                                            />
-
-                                        <TextView
-
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{Double.toString(ShoeListViewModel.listOfShoes[1].size)}"
-                                            android:textSize="18sp"
-                                            android:textColor="@color/black"
-                                            tools:text= "Size: XxXx" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@{ShoeListViewModel.listOfShoes[1].description}"
-                                        android:textSize="18sp"
-                                        android:textColor="@color/black"
-                                        android:textAlignment="center"
-                                        android:layout_margin="10dp"
-                                        tools:text =" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw"/>
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                        <!-- 3º shoe -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="280dp"
-                            app:cardCornerRadius="16dp"
-                            app:cardElevation="10dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="150dp"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/converse" />
-
-                                    <LinearLayout
-                                        android:layout_width="150dp"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[2].name}"
-                                            android:textSize="18sp"
-                                            tools:text = "Model: XxXx"
-                                            android:textColor="@color/black"/>
-
-                                        <TextView
-                                            android:id="@+id/companyText3"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[2].company}"
-                                            android:textSize="18sp"
-                                            android:textColor="@color/black"
-                                            android:layout_marginTop="10dp"
-                                            android:layout_marginBottom="10dp"
-                                            tools:text = "Company: XxXxX"
-                                            />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{Double.toString(ShoeListViewModel.listOfShoes[2].size)}"
-                                            android:textSize="18sp"
-                                            android:textColor="@color/black"
-                                            tools:text= "Size: XxXx" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@{ShoeListViewModel.listOfShoes[2].description}"
-                                        android:textSize="18sp"
-                                        android:textColor="@color/black"
-                                        android:textAlignment="center"
-                                        android:layout_margin="10dp"
-                                        tools:text =" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw"/>
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                        <!-- 4º shoe -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_marginBottom="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="280dp"
-                            app:cardCornerRadius="16dp"
-                            app:cardElevation="10dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <ImageView
-                                        android:layout_width="150dp"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/dc" />
-
-                                    <LinearLayout
-                                        android:layout_width="150dp"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical"
-                                        android:gravity="center">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[3].name}"
-                                            android:textSize="18sp"
-                                            tools:text = "Model: XxXx"
-                                            android:textColor="@color/black"/>
-
-                                        <TextView
-                                            android:id="@+id/companyText4"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[3].company}"
-                                            android:textSize="18sp"
-                                            android:textColor="@color/black"
-                                            android:layout_marginTop="10dp"
-                                            android:layout_marginBottom="10dp"
-                                            tools:text = "Company: XxXxX"
-                                            />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{Double.toString(ShoeListViewModel.listOfShoes[3].size)}"
-                                            android:textSize="18sp"
-                                            android:textColor="@color/black"
-                                            tools:text= "Size: XxXx" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@{ShoeListViewModel.listOfShoes[3].description}"
-                                        android:textSize="18sp"
-                                        android:textColor="@color/black"
-                                        android:textAlignment="center"
-                                        android:layout_margin="10dp"
-                                        tools:text =" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw"/>
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                        <!-- 5º shoe -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="280dp"
-                                app:cardCornerRadius="16dp"
-                                app:cardElevation="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="150dp"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/element" />
-
-                                        <LinearLayout
-                                            android:layout_width="150dp"
-                                            android:layout_height="match_parent"
-                                            android:orientation="vertical"
-                                            android:gravity="center">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{ShoeListViewModel.listOfShoes[4].name}"
-                                                android:textSize="18sp"
-                                                tools:text = "Model: XxXx"
-                                                android:textColor="@color/black"/>
-
-                                            <TextView
-                                                android:id="@+id/companyText5"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{ShoeListViewModel.listOfShoes[4].company}"
-                                                android:textSize="18sp"
-                                                android:textColor="@color/black"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="10dp"
-                                                tools:text = "Company: XxXxX"
-                                                />
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{Double.toString(ShoeListViewModel.listOfShoes[4].size)}"
-                                                android:textSize="18sp"
-                                                android:textColor="@color/black"
-                                                tools:text= "Size: XxXx" />
-                                        </LinearLayout>
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[4].description}"
-                                            android:textSize="18sp"
-                                            android:layout_margin="10dp"
-                                            android:textColor="@color/black"
-                                            android:textAlignment="center"
-                                            tools:text =" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw"/>
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-                        <!-- 6º shoe -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="280dp"
-                                app:cardCornerRadius="16dp"
-                                app:cardElevation="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="150dp"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/fila" />
-
-                                        <LinearLayout
-                                            android:layout_width="150dp"
-                                            android:layout_height="match_parent"
-                                            android:orientation="vertical"
-                                            android:gravity="center">
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{ShoeListViewModel.listOfShoes[5].name}"
-                                                android:textSize="18sp"
-                                                tools:text = "Model: XxXx"
-                                                android:textColor="@color/black"/>
-
-                                            <TextView
-                                                android:id="@+id/companyText6"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{ShoeListViewModel.listOfShoes[5].company}"
-                                                android:textSize="18sp"
-                                                android:textColor="@color/black"
-                                                android:layout_marginTop="10dp"
-                                                android:layout_marginBottom="10dp"
-                                                tools:text = "Company: XxXxX"
-                                                />
-
-                                            <TextView
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="@{Double.toString(ShoeListViewModel.listOfShoes[5].size)}"
-                                                android:textSize="18sp"
-                                                android:textColor="@color/black"
-                                                tools:text= "Size: XxXx" />
-                                        </LinearLayout>
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@{ShoeListViewModel.listOfShoes[5].description}"
-                                            android:textSize="18sp"
-                                            android:layout_margin="10dp"
-                                            android:textColor="@color/black"
-                                            android:textAlignment="center"
-                                            tools:text =" Xsldñkqlwekñqwke qweqweqlqwekqlwekqlñweq qweqweqeqw"/>
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-                </LinearLayout>
                 </LinearLayout>
         </ScrollView>
 
@@ -584,8 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:onClick="@{() -> ShoeListFragment.FAB()}"/>
-           <!-- android:onClick="@{()-> ShoeListFragment.fab()}" -->
+            android:onClick="@{() -> ShoeListFragment.navigationFAB()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
